@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :groups, :through => :members
+  has_many :favorites
+  
 end
