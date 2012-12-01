@@ -4,6 +4,7 @@ class Member < ActiveRecord::Base
   belongs_to :group
   belongs_to :user
 
+  has_many :posts
 
   validates_presence_of :group, :user
 end
