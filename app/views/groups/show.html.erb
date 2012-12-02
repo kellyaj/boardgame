@@ -19,7 +19,16 @@
   </p>
 <% end %>
 
-<h1>
+<h1><strong>Members</h1></strong>
+<ul>
+<% @group.members.each do |member| %>
+  <li>
+    <%= image_tag member.user.picture, :width => "150", :height => "100" %>
+    <%= member.user.name %> 
+  </li>
+<% end %>
+</ul>
+
   
 
 <%= link_to 'Back', groups_path %>
