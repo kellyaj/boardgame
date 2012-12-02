@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202053821) do
+ActiveRecord::Schema.define(:version => 20121202060556) do
 
   create_table "collections", :force => true do |t|
     t.integer  "user_id"
@@ -21,9 +21,23 @@ ActiveRecord::Schema.define(:version => 20121202053821) do
     t.boolean  "favorite"
   end
 
+  create_table "events", :force => true do |t|
+    t.date     "date"
+    t.string   "location"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "favorites", :force => true do |t|
     t.integer  "user_id"
     t.integer  "game_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "game_suggestions", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -59,6 +73,16 @@ ActiveRecord::Schema.define(:version => 20121202053821) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "rsvps", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "event_id"
+    t.boolean  "confirmed"
+    t.string   "snacks"
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -74,6 +98,13 @@ ActiveRecord::Schema.define(:version => 20121202053821) do
     t.string   "level"
     t.string   "firstname"
     t.string   "lastname"
+  end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "game_suggestion_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end

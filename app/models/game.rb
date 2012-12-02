@@ -3,6 +3,7 @@ class Game < ActiveRecord::Base
 
   has_many :favorites
   has_many :collection
+  has_many :game_suggestions
   
   validates_presence_of :name
   validates_uniqueness_of :name
