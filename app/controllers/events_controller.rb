@@ -19,8 +19,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new (params[:event])
-    @event.group_id = params(:group_id)
+    @event.group_id = session[:group_id]
+
     if @event.save
+      session[:group_id] = nil
       redirect_to @event, notice: "Event was successfully created."
     else
       render action: 'new'
