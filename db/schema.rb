@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202060556) do
+ActiveRecord::Schema.define(:version => 20121202060845) do
 
   create_table "collections", :force => true do |t|
     t.integer  "user_id"
@@ -92,10 +92,7 @@ ActiveRecord::Schema.define(:version => 20121202060556) do
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.string   "location"
-    t.string   "game_preferences"
-    t.string   "top_five_games"
     t.string   "picture"
-    t.string   "level"
     t.string   "firstname"
     t.string   "lastname"
   end
