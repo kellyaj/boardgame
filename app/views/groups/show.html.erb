@@ -29,8 +29,18 @@
 <% end %>
 </ul>
 
+<strong>Upcoming Events</strong>
+  <ul>
+    <% @group.events.each do |event| %>
+      <li> 
+      
+       <%= link_to event.event_date.strftime("%B %d, %Y"), event_url %>
+      </li>
+    <% end %>
+  </ul>
+
 <p>
-<%= link_to 'Create new event', new_event_url(:group_id => @group.id) %>
+<%= link_to 'Create new event', new_event_url %>
 </p>
 
 <%= link_to 'Back', groups_path %>
