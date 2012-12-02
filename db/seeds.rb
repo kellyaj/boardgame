@@ -1,4 +1,45 @@
 Game.destroy_all
+Group.destroy_all
+Event.destroy_all
+
+groups = [
+  {
+    :name => 'Game Groupies',
+    :location => 'Chicago IL',
+    :description => 'We play games frequently',
+    :picture => 'http://florida-agriculture.com/consumers/crops/seafoodproducts/species/grouper/images/grouper_mid.jpg'
+  },
+
+ {
+    :name => 'The Brady Bunch',
+    :location => 'Los Angeles',
+    :description => 'Marsha Marsha Marsha',
+    :picture => 'http://collider.com/wp-content/uploads/the-brady-bunch.jpg'
+  },
+
+ {
+    :name => 'Pacific Northwest Players',
+    :location => 'Seattle',
+    :description => 'We dont go outside much anyways',
+    :picture => 'http://rlv.zcache.com/seattle_skyline_postcard-p239032965942253166en8sh_400.jpg'
+  },
+ {
+    :name => 'Seoul Squids',
+    :location => 'Hongdae',
+    :description => '',
+    :picture => 'http://akroot313.andrewkeir313.netdna-cdn.com/wp-content/uploads/squid-logo.jpg'
+  },
+
+ {
+    :name => 'Apples, pumpkins, and some corn',
+    :location => '',
+    :description => 'Told you so.',
+    :picture => 'http://www.mohistory.org/files/imagecache/display/files/images/harvest-festival.png'
+  }
+]
+
+
+
 
 games = [
   {
@@ -821,7 +862,19 @@ games = [
 
 ]
 
+events = [
+  {
+    :date => '',
+    :location => '',
+    :group_id => ''
+  }
+
+]
+
+
 
 puts "Populating database with #{games.count} games."
+puts "Adding #{groups.count} groups to the database"
 
 Game.create games
+Group.create groups
