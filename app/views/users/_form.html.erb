@@ -25,27 +25,22 @@
     <%= f.label :location %><br />
     <%= f.text_field :location %>
   </div>
+  
  <div class="field">
     <%= f.label :picture %><br />
     <%= f.text_field :picture %>
   </div>
 
-<div class="field">
-    <%= f.label :level %><br />
-    <%= f.select :level, [['',''],['Beginner','beginner'],['Intermediate','intermediate'],['Expert', 'expert']] %>
-  </div>
-
-
-
-
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </div>
+
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

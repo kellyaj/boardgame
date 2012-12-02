@@ -13,34 +13,8 @@
 	<strong>
 		Location: <%= @user.location %><br>
 		<%= @user.email %><br>
-		Level: <%= @user.level %><br>
 	</strong>
 </p>
-
-<table>
-	<tr>
-		<th>
-			<ul align="left">
-				<h1>My Top 5 Games:</h1>
-					<li> Starter League-opoly </li>
-					<li> Chess </li>
-					<li> Candyland </li>
-					<li> Sorry! </li>
-					<li> Mouse Trap </li>
-			</ul>
-		</th>
-		<th>
-			<ul align="left">
-				<h1>My Game Preferences:</h1>
-					<li> <%= image_tag "http://aux.iconpedia.net/uploads/17927679221584148596.png", :width => "15", :height => "15" %>Fantasy Games </li>
-					<li> <%= image_tag "http://www.clker.com/cliparts/e/q/p/N/s/G/checkbox-unchecked-md.png", :width => "15", :height => "15" %>Thematic Games </li>
-					<li> <%= image_tag "http://aux.iconpedia.net/uploads/17927679221584148596.png", :width => "15", :height => "15" %>Euro Style Games </li>
-					<li> <%= image_tag "http://aux.iconpedia.net/uploads/17927679221584148596.png", :width => "15", :height => "15" %>Family Games </li>
-					<li> <%= image_tag "http://www.clker.com/cliparts/e/q/p/N/s/G/checkbox-unchecked-md.png", :width => "15", :height => "15" %>Word Games </li>
-			</ul>
-		</th>
-	</tr>
-</table>
 
 
 <%= link_to 'Back', users_path %>
