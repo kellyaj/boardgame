@@ -13,4 +13,11 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :email, :password, :password_confirmation
   validates_uniqueness_of :name, :email
 
+  after_destroy :remove_related_memberships
+
+  def remove_related_memberships
+    related_memberships = Member.where(:user_id => self.id)
+    related_membership.destroy_all
+  end
+
 end
