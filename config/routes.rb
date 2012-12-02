@@ -1,5 +1,7 @@
 Boardgame::Application.routes.draw do
 
+  resources :events
+  
   get "sessions/login_page", :as => 'login_page'
 
   post "sessions/login"
