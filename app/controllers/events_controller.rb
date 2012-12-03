@@ -1,5 +1,10 @@
 class EventsController < ApplicationController
-  
+  before_filter :set_group
+
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
+
   def index
     @events = Event.all
   end
@@ -19,11 +24,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new (params[:event])
-    @event.group_id = session[:group_id]
+    @event.group_id = params[:group_id]
 
     if @event.save
-      session[:group_id] = nil
-      redirect_to @event, notice: "Event was successfully created."
+      
+      redirect_to [@group, @event], notice: "Event was successfully created."
     else
       render action: 'new'
     end

@@ -2,8 +2,6 @@ Boardgame::Application.routes.draw do
 
   get "pages/home"
 
-  resources :events
-  
   get "sessions/login_page", :as => 'login_page'
 
   post "sessions/login"
@@ -12,7 +10,9 @@ Boardgame::Application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :groups
+  resources :groups do
+  	resources :events
+  end
 
   resources :users
 

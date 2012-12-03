@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    session[:group_id] = @group.id
+   
   end
 
   def new
