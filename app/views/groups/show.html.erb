@@ -29,14 +29,23 @@
 <% end %>
 </ul>
 
-<strong>Upcoming Events</strong>
-  <ul>
-    <% @group.events.each do |event| %>
-      <li> 
-       <%= link_to event.event_date.strftime("%B %d, %Y"), [@group, event] %>
-      </li>
-    <% end %>
-  </ul>
+
+<p>
+  <strong>Upcoming Game:</strong>
+    <br>
+    <%= @upcoming_event.event_date.strftime("%B %d, %Y") %>
+    <br>
+    <%= @upcoming_event.location %>
+</p>
+
+<strong>Upcoming Game Nights:</strong>
+<ul>
+  <% @group.events.each do |event| %>
+    <li> 
+      <%= link_to event.event_date.strftime("%B %d, %Y"), [@group, event] %>
+    </li>
+  <% end %>
+</ul>
 
 <p>
 <%= link_to 'Create new event', new_group_event_url(@group) %>

@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @upcoming_event = @group.events.first(:order => 'event_date asc')
   end
 
   def new
