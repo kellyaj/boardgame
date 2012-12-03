@@ -33,8 +33,7 @@
   <ul>
     <% @group.events.each do |event| %>
       <li> 
-      
-       <%= link_to event.event_date.strftime("%B %d, %Y"), event_url %>
+       <%= link_to event.event_date.strftime("%B %d, %Y"), [@group, event] %>
       </li>
     <% end %>
   </ul>

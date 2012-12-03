@@ -13,7 +13,7 @@ Boardgame::Application.routes.draw do
   resources :groups do
   	resources :events
   end
-
+ # change all the links
   resources :users
 
 end
