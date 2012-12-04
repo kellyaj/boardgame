@@ -31,13 +31,18 @@
 
 
 <p>
-  <strong>Upcoming Game:</strong>
+    <strong>Upcoming Game:</strong>
+  <% if @upcoming_event.present? %>
     <br>
     <%= @upcoming_event.event_date.strftime("%B %d, %Y") %>
     <br>
     <%= @upcoming_event.location %>
+  <% else %>
+    <br>
+    <strong>No events planned<strong>
+  <% end %>
 </p>
-
+  <% if @group.events.present? %>
 <strong>Upcoming Game Nights:</strong>
 <ul>
   <% @group.events.each do |event| %>
@@ -46,9 +51,15 @@
     </li>
   <% end %>
 </ul>
-
+  <% end %>
 <p>
 <%= link_to 'Create new event', new_group_event_url(@group) %>
 </p>
 
 <%= link_to 'Back', groups_path %>
+
+
+<% url = join_group_url(@group) %>
+<%= form_for @group, :url => url, :method => 'put' do |f| %>
+<%= f.submit "Join!" %>
+<% end %>

@@ -4,13 +4,13 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :members
   has_many :posts, :through => :members
   has_many :members
-  has_many :events #not sure if this is necessary
+  has_many :events 
   validates_presence_of :name
   validates_uniqueness_of :name
 
   after_destroy :remove_related_members
 
-  def add_member(user) #might need this for a join action in the groups controller
+  def add_member(user) 
   	new_member = Member.new
   	new_member.user_id = user.id
   	new_member.group_id = self.id

@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-
+  before_filter :current_user_check, :only => [ :join ]
   def index
     @groups = Group.all
   end
@@ -42,5 +42,13 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @group.destroy
   end
+
+  def join
+    @group = Group.find(params[:id])
+
+    @group.add_member(current_user)
+    redirect_to @group, notice: "You have successfully joined the group."
+  end
+
 
 end
