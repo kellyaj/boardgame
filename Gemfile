@@ -36,3 +36,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'pry'
+gem 'pry-doc'
+gem 'pry-remote'
+gem 'pry-nav'
+gem 'pry-stack_explorer'
+gem 'pry-rescue'
+gem "paperclip", "~> 3.0"

@@ -23,7 +23,7 @@
 <ul>
 <% @group.members.each do |member| %>
   <li>
-    <%= image_tag member.user.picture, :width => "150", :height => "100" %>
+    <%= image_tag member.user.avatar.url(:thumb) %>
     <%= member.user.name %> 
   </li>
 <% end %>

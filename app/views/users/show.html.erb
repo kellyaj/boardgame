@@ -1,5 +1,5 @@
 <p> 
- <%= image_tag @user.picture, :width => "200", :height => "150" %>
+ <%= image_tag @user.avatar.url(:medium) %>
  <strong><font size = 10>
  	<%= @user.name %>
  </strong></font>
