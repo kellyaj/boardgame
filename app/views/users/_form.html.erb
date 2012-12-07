@@ -47,6 +47,14 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
+  <%= f.fields_for :collections do |collection| %>
+    <%= collection.label :game_id %>
+    <%= collection.text_field :game_id %>
+      <%= collection.fields_for :game do |game| %>
+      <% end %>
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

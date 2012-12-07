@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.collections.build#.build_game
   end
 
   def edit
@@ -19,7 +20,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(params[:user])
-
+    @user.collection = Collection.create(params[:collection])
+    @user.collections.build.build_game
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
     else

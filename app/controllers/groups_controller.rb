@@ -7,6 +7,13 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @upcoming_event = @group.events.first(:order => 'event_date asc')
+   
+    group_members = Member.find_all_by_group_id(@group.id)
+    @posts = Array.new
+    group_members.each do |member|
+      @posts << Post.find_all_by_member_id(member.id)
+    end
+    
   end
 
   def new

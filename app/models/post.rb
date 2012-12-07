@@ -3,6 +3,6 @@ class Post < ActiveRecord::Base
 
   belongs_to :member
   belongs_to :user
-
+  belongs_to :group
   validates_presence_of :member_id, :message
 end

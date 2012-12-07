@@ -63,3 +63,16 @@
 <%= form_for @group, :url => url, :method => 'put' do |f| %>
 <%= f.submit "Join!" %>
 <% end %>
+
+<p>
+  <strong> Messages </strong>
+<ul>
+<% @posts.each do |first_layer| %>
+  <% first_layer.each do |message| %>
+    <li>
+      <%= image_tag message.member.user.avatar.url(:thumb) %> <%= message.message %>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+</p>
