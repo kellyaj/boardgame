@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+
+/************** Begin New Styles ********************/
+
+body, p, h1, h2, h3, h4{
+	font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+}
+body{
+	font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+	background: #339999;
+	line-height: 145%;
