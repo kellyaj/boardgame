@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.collections.build#.build_game
+    
   end
 
   def edit
@@ -20,7 +20,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(params[:user])
-    
+
+    game_name = params[:new_game_name]
+    assign_or_create_game(game_name)
+
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
     else
@@ -30,6 +33,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    game_name = params[:new_game_name]
+    assign_or_create_game(game_name)
 
     if @user.update_attributes(params[:user])
       redirect_to @user, notice: 'User was successfully updated.'
@@ -43,4 +49,16 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  def assign_or_create_game(game_name)
+    unless game_name.empty?
+      game = Game.find_by_name(game_name)
+      if game.nil?
+        game = Game.create(:name => game_name)
+      end
+      Collection.create(:game_id => game.id, :user_id => @user.id)
+    end
+  end
+
+
 end
+

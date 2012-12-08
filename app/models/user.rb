@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :collections_attributes, :games_attributes, :avatar, :name, :password, :password_confirmation, :password_digest, :location, :picture, :firstname, :lastname
+  attr_accessible :email, :avatar, :name, :password, :password_confirmation, :password_digest, :location, :picture, :firstname, :lastname
 
 
   has_secure_password
 
   has_many :collections
   has_many :games, :through => :collections 
-  accepts_nested_attributes_for :collections
-  #accepts_nested_attributes_for :games
+
   #To get to a user's favorites, use example_user.collections.find_all_by_favorite(true)
   has_many :members
   has_many :groups, :through => :members
