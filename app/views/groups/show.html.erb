@@ -24,7 +24,7 @@
 <% @group.members.each do |member| %>
   <li>
     <%= image_tag member.user.avatar.url(:thumb) %>
-    <%= member.user.name %> 
+    <%= link_to member.user.name, user_url(member.user_id) %> 
   </li>
 <% end %>
 </ul>
@@ -67,12 +67,12 @@
 <p>
   <strong> Messages </strong>
 <ul>
-<% @posts.each do |first_layer| %>
-  <% first_layer.each do |message| %>
-    <li>
-      <%= image_tag message.member.user.avatar.url(:thumb) %> <%= message.message %>
-    </li>
-  <% end %>
+
+<% @posts.each do |message| %>
+  <li>
+    <%= image_tag message.member.user.avatar.url(:thumb) %> <%= message.message %>
+  </li>
 <% end %>
+<%= render 'inline_form' %>
 </ul>
 </p>
