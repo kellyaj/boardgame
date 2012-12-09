@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+  before_filter :require_user, :except => [:index, :new, :create, :assign_or_create_game]
+  
+  def require_user
+    if session[:user_id] != params[:id].to_i
+      redirect_to root_url, notice: "You must sign in first"
+    end
+  end
+
   def index
     @users = User.all
   end
@@ -9,6 +17,9 @@ class UsersController < ApplicationController
   end
 
   def new
+    if session[:user_id].present?
+      redirect_to root_url, notice: "You've already made an account, #{User.find(session[:user_id]).firstname}"
+    end
     @user = User.new
     
   end
@@ -25,7 +36,9 @@ class UsersController < ApplicationController
     assign_or_create_game(game_name)
 
     if @user.save
+      session[:user_id] = @user.id
       redirect_to @user, notice: 'User was successfully created.'
+      #will want this to redirect to the user dashboard
     else
       render action: "new" 
     end

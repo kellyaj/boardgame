@@ -47,6 +47,7 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
+    redirect_to groups_url, notice: "That group has been destroyed"
   end
 
   def join
