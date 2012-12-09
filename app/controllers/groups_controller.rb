@@ -27,7 +27,9 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(params[:group])
 
+
     if @group.save
+      @group.add_admin(current_user)
       redirect_to @group, notice: 'Group was successfully created.' 
     else
       render action: "new"
