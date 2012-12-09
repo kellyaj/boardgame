@@ -5,3 +5,14 @@
 <p>
 	<%= @event.location %>
 </p>
+
+<strong>Current Game Suggestions</strong>
+<ul>
+	<% @event.game_suggestions.each do |suggestion| %>
+		<li>
+			<%= suggestion.game.name %>
+		</li>
+	<% end %>
+	<%= render 'inline_form' %>
+</ul>
+

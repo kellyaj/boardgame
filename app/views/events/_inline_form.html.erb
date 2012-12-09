@@ -1,0 +1,6 @@
+<li>
+<%= form_tag(@game_suggestion) do |f| %>
+	<%= text_field_tag :game %>
+	<%= hidden_field_tag :event_id, @event.id %>
+<% end %>
+</li>

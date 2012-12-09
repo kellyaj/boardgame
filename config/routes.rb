@@ -1,6 +1,5 @@
 Boardgame::Application.routes.draw do
 
-
   get "pages/home"
 
   get "sessions/login_page", :as => 'login_page'
@@ -22,6 +21,8 @@ Boardgame::Application.routes.draw do
 
   resources :posts
 
+  resources :game_suggestions
+  
   get '/groups/:id/join' => 'groups#join'
 
 end

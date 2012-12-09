@@ -11,6 +11,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @game_suggestion = GameSuggestion.new
+    @game_suggestion.event_id = @event.id
 
   end
 
