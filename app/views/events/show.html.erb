@@ -2,11 +2,12 @@
 	<%= @event.event_date.strftime("%B %d, %Y") %>
 </h1>
 
+<strong>Location</strong>
 <p>
 	<%= @event.location %>
 </p>
 
-<strong>Current Game Suggestions</strong>
+<strong>Game Choice</strong>
 <ul>
 	<% @event.game_suggestions.each do |suggestion| %>
 		<li>

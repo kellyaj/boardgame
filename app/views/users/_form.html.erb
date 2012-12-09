@@ -41,7 +41,7 @@
   <% end %>
 
   Add New Game:
-  <%= text_field_tag :new_game_name %> 
+  <%= text_field_tag :new_game_name, '', data: {autocomplete_source: Game.order(:name).map(&:name)} %> 
     <div class="actions">
       <%= f.submit %>
     </div>
