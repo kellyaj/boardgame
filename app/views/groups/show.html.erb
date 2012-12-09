@@ -24,7 +24,10 @@
 <% @group.members.each do |member| %>
   <li>
     <%= image_tag member.user.avatar.url(:thumb) %>
-    <%= link_to member.user.firstname, user_url(member.user_id) %> 
+    <%= link_to member.user.firstname, user_url(member.user_id) %>
+    <% if member.admin == true %>
+      (admin)
+    <% end %> 
   </li>
 <% end %>
 </ul>

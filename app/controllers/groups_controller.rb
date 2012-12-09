@@ -1,5 +1,16 @@
 class GroupsController < ApplicationController
   before_filter :current_user_check, :only => [ :join ]
+  before_filter :check_admin, :only => [:edit, :update, :destroy]
+
+  def check_admin
+    @group = Group.find(params[:id])
+    if session[:user_id] == @group.members.where(:admin => true).first.user.id
+    else
+     redirect_to root_url, notice: "You need to be the group administrator to do that"
+      #this should redirect to a dashboard
+    end 
+  end
+
   def index
     @groups = Group.all
   end
