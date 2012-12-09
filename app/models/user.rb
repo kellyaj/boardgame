@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :collections
   has_many :games, :through => :collections 
-
+  has_many :rsvps, :through => :members
   #To get to a user's favorites, use example_user.collections.find_all_by_favorite(true)
   has_many :members
   has_many :groups, :through => :members

@@ -17,6 +17,14 @@
 	<%= render 'inline_form' %>
 </ul>
 
+<strong> Attending: </strong>
+<ul>
+	<% @event.rsvps.each do |member| %>
+		<li>
+			<%= image_tag member.member.user.avatar(:thumb) %>
+		</li>
+	<% end %>
+</ul>
 
 <strong> Can you attend? </strong>
 <% url = ([@group, @event]) %>
