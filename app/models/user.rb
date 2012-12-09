@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :members
   has_many :posts, :through => :members
   validates_presence_of :email, :password, :password_confirmation
-  validates_uniqueness_of :name, :email
+  validates_uniqueness_of :email
 
   #after_destroy :remove_related_memberships
 
