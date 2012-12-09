@@ -17,3 +17,9 @@
 	<%= render 'inline_form' %>
 </ul>
 
+
+<strong> Can you attend? </strong>
+<% url = ([@group, @event]) %>
+<%= form_for @rsvp, :url => url, :method => 'post' do |f| %>
+<%= f.submit "Yes, I'm coming" %>
+<% end %>

@@ -14,4 +14,12 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def add_rsvp(user)
+    new_rsvp = Rsvp.new
+    new_rsvp.member_id = user.id
+    new_rsvp.event_id = self.id
+    new_rsvp.confirmed = true
+    new_rsvp.save
+  end
+
 end

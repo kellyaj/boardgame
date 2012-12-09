@@ -15,6 +15,9 @@ Boardgame::Application.routes.draw do
   		put 'join'
   	end
   	resources :events
+      member do
+        put 'join'
+      end
   end
 
   resources :users
@@ -24,5 +27,7 @@ Boardgame::Application.routes.draw do
   resources :game_suggestions
   
   get '/groups/:id/join' => 'groups#join'
+
+  post '/groups/:id/events/:id' => 'events#join'
 
 end

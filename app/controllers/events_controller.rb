@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :set_group
+  before_filter :set_group, :except => [ :join ]
 
   def set_group
     @group = Group.find(params[:group_id])
@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     @game_suggestion = GameSuggestion.new
     @game_suggestion.event_id = @event.id
 
+    @rsvp = Rsvp.new
   end
 
   def new
@@ -49,5 +50,12 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params:[id])
     @event.destroy
+  end
+#The redirect here is broken, can't do @event??
+  def join
+    @event = Event.find(params[:id])
+
+    @event.add_rsvp(current_user)
+    redirect_to groups_url, notice: "You've RSVP'd to this event"
   end
 end
