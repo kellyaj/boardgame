@@ -24,7 +24,7 @@
 <% @group.members.each do |member| %>
   <li>
     <%= image_tag member.user.avatar.url(:thumb) %>
-    <%= link_to member.user.name, user_url(member.user_id) %> 
+    <%= link_to member.user.firstname, user_url(member.user_id) %> 
   </li>
 <% end %>
 </ul>
@@ -76,3 +76,12 @@
 <%= render 'inline_form' %>
 </ul>
 </p>
+<br />
+<strong> Game Collections:</strong>
+<ul>
+  <% @games.each do |game| %>
+    <li>
+      <%= game.name %>
+    </li>
+  <% end %>
+</ul>

@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @post = Post.new
     @post.member = @group.members.where(:user_id => current_user.id).first
-
+    @games = @group.games.uniq!
     @upcoming_event = @group.events.first(:order => 'event_date asc')
     
     @posts = @group.posts

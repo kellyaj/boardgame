@@ -4,7 +4,8 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :members
   has_many :posts, :through => :members
   has_many :members
-  has_many :events 
+  has_many :events
+  has_many :games, :through => :users
   validates_presence_of :name
   validates_uniqueness_of :name
 
