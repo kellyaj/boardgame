@@ -2,7 +2,7 @@
   <%= @group.name %>
 </h1>
 <h1>
-  <%= image_tag @group.picture, :width => "200", :height => "150" %>
+  <%= image_tag @group.avatar.url(:medium) %>
 </h1>
 
 <% if @group.location.present? %>

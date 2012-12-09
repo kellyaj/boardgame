@@ -18,6 +18,9 @@
   </header>
   <aside>
     <div class="add-image-container">
+      <% if @user.avatar.present? %>
+        <%= image_tag @user.avatar.url(:medium) %>
+      <% end %>
       Add your image:
       <%= f.file_field :avatar %>
     </div>

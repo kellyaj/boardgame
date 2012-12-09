@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  attr_accessible :name, :location, :description, :picture
+  attr_accessible :name, :avatar, :location, :description, :picture
 
   has_many :users, :through => :members
   has_many :posts, :through => :members
@@ -8,6 +8,8 @@ class Group < ActiveRecord::Base
   has_many :games, :through => :users
   validates_presence_of :name
   validates_uniqueness_of :name
+
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   after_destroy :remove_related_members
 
