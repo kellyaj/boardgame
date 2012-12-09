@@ -24,7 +24,9 @@ Boardgame::Application.routes.draw do
 
   resources :posts
 
-  resources :game_suggestions
+  resources :game_suggestions do
+    member { post :upvote }
+  end
   
   get '/groups/:id/join' => 'groups#join'
 

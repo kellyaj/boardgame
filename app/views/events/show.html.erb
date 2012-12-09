@@ -11,7 +11,7 @@
 <ul>
 	<% @event.game_suggestions.each do |suggestion| %>
 		<li>
-			<%= suggestion.game.name %>
+			<%= suggestion.game.name %> <%= link_to "up", upvote_game_suggestion_path(suggestion, type: "up"), method: "post" %>
 		</li>
 	<% end %>
 	<%= render 'inline_form' %>
@@ -33,3 +33,15 @@
 <% end %>
 
 <%= link_to 'Back', @group %>
+
+<strong>Game Choice</strong>
+<ul>
+<% @game_suggestions.each do |show| %>
+	<% unless show.game.nil? %>
+	<li>
+	<%= show.game.name %> <%= link_to "up", upvote_game_suggestion_path(show, type: "up"), method: "post" %>
+	</li>
+	<% end %>
+<% end %>
+<%= render 'inline_form' %>
+</ul>

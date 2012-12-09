@@ -27,4 +27,11 @@ class GameSuggestionsController < ApplicationController
   	end
   end
 
+  def upvote
+    value = params[:type] == "up" ? 1 : -1
+    @game_suggestion = GameSuggestion.find(params[:id])
+    @game_suggestion.add_or_update_evaluation(:upvotes, value, current_user.members.first)
+    redirect_to :back, notice: "Thank you for voting" 
+  end
+
 end

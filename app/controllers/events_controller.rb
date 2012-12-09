@@ -13,7 +13,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @game_suggestion = GameSuggestion.new
     @game_suggestion.event_id = @event.id
-
+    
+    @game_suggestions = GameSuggestion.find_with_reputation(:upvotes, :all, order: "upvotes desc")
     @rsvp = Rsvp.new
   end
 

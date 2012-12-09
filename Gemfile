@@ -44,3 +44,4 @@ gem 'pry-nav'
 gem 'pry-stack_explorer'
 gem 'pry-rescue'
 gem "paperclip", "~> 3.0"
+gem 'activerecord-reputation-system', require: 'reputation_system'
