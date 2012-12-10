@@ -12,11 +12,11 @@ end
 
 
  # class MyMailer < ActionMailer::Base
- #     def signup_notification(recipient)
- #       recipients recipient.email_address_with_name
- #       subject    "New account information"
- #       body       "account" => recipient
- #       from       "system@example.com"
- #       content_type "text/html"   #Here's where the magic happens
- #     end
- #   end
+ #          def signup_notification(recipient)
+ #            recipients recipient.email_address_with_name
+ #            subject    "New account information"
+ #            body       "account" => recipient
+ #            from       "system@example.com"
+ #            content_type "text/html"   #Here's where the magic happens
+ #          end
+ #        end
