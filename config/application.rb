@@ -65,7 +65,8 @@ module Boardgame
       :port  => 587,
       :user_name  => "kevinryantao@gmail.com",
       :password  => "cHastWor7",
-      :authentication  => :login
+      :authentication       => "plain",
+      :enable_starttls_auto => true      
     }
     config.action_mailer.raise_delivery_errors = true
     
