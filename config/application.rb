@@ -62,11 +62,13 @@ module Boardgame
     config.action_mailer.delivery_method = :smtp
     ActionMailer::Base.smtp_settings = {
       :address  => "smtp.gmail.com",
-      :port  => 465,
+      :port  => 587,
       :user_name  => "kevinryantao@gmail.com",
       :password  => "cHastWor7",
       :authentication  => :login
     }
     config.action_mailer.raise_delivery_errors = true
+    
+    
   end
 end
