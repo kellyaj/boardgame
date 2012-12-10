@@ -1,6 +1,15 @@
 class GroupsController < ApplicationController
   before_filter :current_user_check, :only => [ :join ]
+  before_filter :was_invited, :only => [ :join ]
   before_filter :check_admin, :only => [:edit, :update, :destroy]
+
+  def was_invited
+    @group = Group.find(params[:id])
+    unless session[:user_id] == @group.invites.find_by_user_id(session[:user_id]).user_id
+      redirect_to root_url, notice: "You have not yet been invited"
+      #this should redirect to a dashboard
+    end
+  end
 
   def check_admin
     @group = Group.find(params[:id])
