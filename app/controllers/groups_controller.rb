@@ -22,8 +22,10 @@ class GroupsController < ApplicationController
     @post.member = @group.members.where(:user_id => current_user.id).first
     @games = @group.games.uniq!
     @upcoming_event = @group.events.first(:order => 'event_date asc')
-    
+    @invite = Invite.new
+    @invite.group_id = @group.id
     @posts = @group.posts
+
   end
 
   def new
@@ -69,6 +71,8 @@ class GroupsController < ApplicationController
     @group.add_member(current_user)
     redirect_to @group, notice: "You have successfully joined the group."
   end
+
+
 
 
 end

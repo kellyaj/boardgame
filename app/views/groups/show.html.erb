@@ -90,3 +90,7 @@
   <% end %>
 </ul>
 <% end %>
+
+<% if session[:user_id] == @group.members.where(:admin => true).first.user.id %>
+  <%= render 'invites_form' %>
+<% end %>

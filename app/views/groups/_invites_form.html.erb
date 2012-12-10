@@ -1,0 +1,5 @@
+Invite by email:
+<%= form_tag(@invite) do |f| %>
+	<%= text_field_tag :new_invite %>
+	<%= hidden_field_tag :group_id, @group.id %>
+<% end %>

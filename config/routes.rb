@@ -1,5 +1,6 @@
 Boardgame::Application.routes.draw do
 
+
   get "pages/home"
 
   get "sessions/login_page", :as => 'login_page'
@@ -19,6 +20,8 @@ Boardgame::Application.routes.draw do
         put 'join'
       end
   end
+
+  resources :invites
 
   resources :users
 

@@ -35,6 +35,7 @@ class EventsController < ApplicationController
       redirect_to [@group, @event], notice: "Event was successfully created."
     else
       render action: 'new'
+      #will want to redirect to dashboard/group#show
     end
   end
 
@@ -45,6 +46,7 @@ class EventsController < ApplicationController
       redirect_to [@group, @event], notice: "Event was successfully edited"
     else
       render action: "edit"
+      #will want to redirect to dashboard/group#show
     end
   end
 
@@ -58,5 +60,6 @@ class EventsController < ApplicationController
 
     @event.add_rsvp(current_user)
     redirect_to groups_url, notice: "You've RSVP'd to this event"
+    #will want to redirect to dashboard/group#show
   end
 end
