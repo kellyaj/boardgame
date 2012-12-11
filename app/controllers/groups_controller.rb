@@ -2,7 +2,8 @@ class GroupsController < ApplicationController
   before_filter :current_user_check, :only => [ :join ]
   before_filter :was_invited, :only => [ :join ]
   before_filter :check_admin, :only => [:edit, :update, :destroy]
-
+  before_filter :member_check, :only => [ :show ]
+  
   def was_invited
     @group = Group.find(params[:id])
     unless session[:user_id] == @group.invites.find_by_user_id(session[:user_id]).user_id
@@ -11,6 +12,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  def member_check
+    @group = Group.find(params[:id])
+    unless Member.where(:group_id => @group.id, :user_id => session[:user_id]).present? || @group.invites.find_by_user_id(session[:user_id]).present?
+      redirect_to root_url, notice: "You are not a member or an invitee of that group."
+    end
+  end
   def check_admin
     @group = Group.find(params[:id])
     if session[:user_id] == @group.members.where(:admin => true).first.user.id

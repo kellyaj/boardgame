@@ -38,5 +38,12 @@
 	<% end %>
 	</ul>
 
-
+<strong>Your current invites:</strong>
+<ul>
+	<% @invites.each do |invite| %>
+		<li>
+				<%= link_to invite.group.name, invite %>
+		</li>
+	<% end %>
+<ul>
 <%= link_to 'Back', users_path %>

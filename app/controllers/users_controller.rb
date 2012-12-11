@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @invites = Invite.find_all_by_user_id(@user.id)
   end
 
   def new
@@ -60,6 +61,11 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+  end
+
+
+  def dashboard
+    @user = User.find(params[:id])
   end
 
   def assign_or_create_game(game_name)

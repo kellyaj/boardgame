@@ -35,4 +35,5 @@ Boardgame::Application.routes.draw do
 
   post '/groups/:id/events/:id' => 'events#join'
 
+  get '/users/:id/dashboard' => 'users#dashboard', :as => 'user_dashboard'
 end
