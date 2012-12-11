@@ -57,9 +57,10 @@ class EventsController < ApplicationController
 #The redirect here is broken, can't do @event??
   def join
     @event = Event.find(params[:id])
+    @member = Member.find_by_user_id_and_group_id(current_user.id,@event.group_id)
 
-    @event.add_rsvp(current_user)
+    @event.add_rsvp(@member)
     redirect_to groups_url, notice: "You've RSVP'd to this event"
-    #will want to redirect to dashboard/group#show
+    #will want to be AJAX'd
   end
 end
