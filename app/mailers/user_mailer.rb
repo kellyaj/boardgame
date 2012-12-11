@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     email_with_name = "#{@user.name} <#{@user.email}>"
     @url = "http://sheltered-falls-2959.herokuapp.com/"
-    mail(:to => email_with_name, :subject => "welcome to Our Awesome Site")
+    mail(:to => email_with_name, :subject => "Welcome to Our Awesome Site")
   end
 end
 
