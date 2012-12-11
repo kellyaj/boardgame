@@ -17,17 +17,17 @@
 </p>
 
 <p>
-	<strong> <%= @user.name%>'s Groups: </strong>
+	<strong> <%= @user.firstname%>'s Groups: </strong>
 	<ul>
 		<% @user.groups.each do |group| %>
-		<li> <%= link_to group.name, group %> </li>	
+		<li> <%= image_tag group.avatar(:thumb) %><%= link_to group.name, group %> </li>	
 		<% end %>
 	</ul>
 </p>
 
 
 	<ul>
-	<strong> <%= @user.name %>'s Games: </strong> 
+	<strong> <%= @user.firstname %>'s Games: </strong> 
 	<% @user.collections.each do |collection| %>
 		<li> 
 			<%= collection.game.name %>
