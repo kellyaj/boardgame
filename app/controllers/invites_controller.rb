@@ -10,13 +10,17 @@ class InvitesController < ApplicationController
   	invited_user = params[:new_invite]
     make_new_invite(invited_user)
 
-    if @invite.save
-    	redirect_to groups_url, notice: "Invite sent"
-    	#will want to redirect to dashboard/group#show
-    else
-  		redirect_to groups_url, notice: "You've already invited that person"
-  		#will want to redirect to dashboard/group#show
-  	end
+    respond_to do |format|
+      format.html {
+        if @invite.save
+        	redirect_to groups_url, notice: "Invite sent"
+        	#will want to redirect to dashboard/group#show
+        else
+      		redirect_to groups_url, notice: "You've already invited that person"
+      		#will want to redirect to dashboard/group#show
+      	end }
+      format.js
+    end
   end
 
   def make_new_invite(invited_user)

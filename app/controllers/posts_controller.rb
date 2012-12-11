@@ -6,11 +6,15 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     
-    if @post.save
-      redirect_to groups_url, notice: 'Post was successfully created.' 
-    else
-      render action: "new"
-    end
+    respond_to do |format|
+      format.html {
+        if @post.save
+          redirect_to groups_url, notice: 'Post was successfully created.' 
+        else
+          render action: "new"
+        end }
+      format.js 
+    end 
 
   end
 

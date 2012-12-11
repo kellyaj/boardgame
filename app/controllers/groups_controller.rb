@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
     @invite = Invite.new
     @invite.group_id = @group.id
     @posts = @group.posts
-
+    @invitees = Invite.find_all_by_group_id(@group.id)
   end
 
   def new
@@ -78,7 +78,10 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     @group.add_member(current_user)
-    redirect_to @group, notice: "You have successfully joined the group."
+    respond_to do |format|
+      format.html { redirect_to @group, notice: "You have successfully joined the group." }
+      format.js
+    end
   end
 
 

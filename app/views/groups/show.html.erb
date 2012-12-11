@@ -21,6 +21,7 @@
 
 <h1><strong>Members</h1></strong>
 <ul>
+<div id='members_list'>
 <% @group.members.each do |member| %>
   <li>
     <%= image_tag member.user.avatar.url(:thumb) %>
@@ -30,6 +31,7 @@
     <% end %> 
   </li>
 <% end %>
+</div>
 </ul>
 
 
@@ -61,22 +63,24 @@
 
 <%= link_to 'Back', groups_path %>
 
-
-<% url = join_group_url(@group) %>
-<%= form_for @group, :url => url, :method => 'put' do |f| %>
-<%= f.submit "Join!" %>
+<% unless @group.members.find_by_user_id(session[:user_id]).present? %>
+  <% url = join_group_url(@group) %>
+  <%= form_for @group, remote: true, :url => url, :method => 'put' do |f| %>
+  <%= f.submit "Join!" %>
+  <% end %>
 <% end %>
 
 <p>
   <strong> Messages </strong>
 <ul>
-
+<div id='testing' >
 <% @posts.each do |message| %>
   <li>
     <%= image_tag message.member.user.avatar.url(:thumb) %> <%= message.message %>
   </li>
 <% end %>
 <%= render 'inline_form' %>
+</div>
 </ul>
 </p>
 <br />
@@ -92,5 +96,12 @@
 <% end %>
 
 <% if session[:user_id] == @group.members.where(:admin => true).first.user.id %>
-  <%= render 'invites_form' %>
+
+  Current Invitees:
+  <ul>
+    <% @invitees.each do |invitee| %>
+      <li><%= invitee.user.email %></li>
+    <% end %>
+    <%= render 'invites_form' %>
+  </ul>
 <% end %>

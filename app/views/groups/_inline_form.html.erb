@@ -1,5 +1,5 @@
 <li>
-	<%= form_for(@post) do |f| %>
+	<%= form_for @post, remote: true do |f| %>
 	<%= f.text_field :message %>
 	<%= f.hidden_field :member_id %>
 	<% end %>
