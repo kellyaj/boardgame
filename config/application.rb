@@ -63,8 +63,8 @@ module Boardgame
     ActionMailer::Base.smtp_settings = {
       :address  => "smtp.gmail.com",
       :port  => 587,
-      :user_name  => "kevinryantao@gmail.com",
-      :password  => "cHastWor7",
+      :user_name  => "tessalangameplanner@gmail.com",
+      :password  => "tessalan",
       :authentication       => "plain",
       :enable_starttls_auto => true      
     }
