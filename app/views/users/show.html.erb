@@ -42,7 +42,7 @@
 <ul>
 	<% @invites.each do |invite| %>
 		<li>
-				<%= link_to invite.group.name, invite %>
+				<%= link_to invite.group.name, invite.group %>
 		</li>
 	<% end %>
 <ul>

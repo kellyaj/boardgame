@@ -1,5 +1,5 @@
 <li>
-<%= form_tag(@game_suggestion) do |f| %>
+<%= form_tag @game_suggestion, :id => "suggestion", remote: true do |f| %>
 	<%= text_field_tag :game, '', data: {autocomplete_source: @group.games.order(:name).map(&:name)}  %>
 	<%= hidden_field_tag :event_id, @event.id %>
 <% end %>

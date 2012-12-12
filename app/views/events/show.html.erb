@@ -10,9 +10,7 @@
 <strong>Game Choice</strong>
 <ul>
 	<% @event.game_suggestions.each do |suggestion| %>
-		<li>
-			<%= suggestion.game.name %> <%= link_to "up", upvote_game_suggestion_path(suggestion, type: "up"), method: "post" %>
-		</li>
+		<%= render 'game_suggestion', :game_suggestion_var => suggestion %>
 	<% end %>
 	<%= render 'inline_form' %>
 </ul>

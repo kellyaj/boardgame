@@ -1,0 +1,3 @@
+$("#suggestion").parent().before("<%= escape_javascript render('events/game_suggestion', :game_suggestion_var => @game_suggestion)%>");
+$("#game_suggestion_<%=@game_suggestion.id%>").slideDown();
+$("#suggestion").val("");

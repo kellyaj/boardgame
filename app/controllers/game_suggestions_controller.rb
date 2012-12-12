@@ -10,11 +10,16 @@ class GameSuggestionsController < ApplicationController
     current_suggestion = params[:game]
     make_game_suggestion(current_suggestion)
 
-    if @game_suggestion.save
-      redirect_to groups_url, notice: 'Suggestion was successfully created.' 
-    else
-      render action: "new"
-  	end
+    @game_suggestion = GameSuggestion.last
+    respond_to do |format|
+      if @game_suggestion.save
+        format.js { render 'create' }
+        format.html { redirect_to groups_url, notice: 'Game Suggestion was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
+    end
+
   end
 
   def make_game_suggestion(suggestion)

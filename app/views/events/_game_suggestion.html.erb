@@ -1,0 +1,6 @@
+<% unless game_suggestion_var.nil? %>
+	<li class="game_suggestion_li" id="game_suggestion_<%= game_suggestion_var.id%>">
+			<%= game_suggestion_var.game.name %> <%= link_to "up", upvote_game_suggestion_path(game_suggestion_var, type: "up"), method: "post" %>
+	</li>
+<% end %>
+
