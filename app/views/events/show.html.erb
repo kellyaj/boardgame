@@ -18,21 +18,19 @@
 </ul>
 
 <strong> Attending: </strong>
-<ul>
+<ul id="attending_list">
 	<% @event.rsvps.each do |member| %>
-		<li>
-			<%= image_tag member.member.user.avatar(:thumb) %>
-		</li>
+		<%= render 'attending', :rsvp_var => member %>
 	<% end %>
+	<% unless @member_confirmed %>
+		<strong> Can you attend? </strong>
+		<% url = ([@group, @event]) %>
+		<%= form_for @rsvp, :url => url, remote: true, :method => 'post' do |f| %>
+		<%= f.submit "Yes, I'm coming" %>
+		<% end %>
+<% end %>
 </ul>
 
-<% unless @member_confirmed %>
-	<strong> Can you attend? </strong>
-	<% url = ([@group, @event]) %>
-	<%= form_for @rsvp, :url => url, :method => 'post' do |f| %>
-	<%= f.submit "Yes, I'm coming" %>
-	<% end %>
-<% end %>
 
 <%= link_to 'Back', @group %>
 

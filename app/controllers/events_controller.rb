@@ -64,7 +64,11 @@ class EventsController < ApplicationController
     @member = Member.find_by_user_id_and_group_id(current_user.id,@event.group_id)
 
     @event.add_rsvp(@member)
-    redirect_to groups_url, notice: "You've RSVP'd to this event"
-    #will want to be AJAX'd
+    #redirect_to groups_url, notice: "You've RSVP'd to this event"
+    @rsvp = Rsvp.last
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 end

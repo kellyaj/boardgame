@@ -1,0 +1,5 @@
+<% unless rsvp_var.nil? %>
+<li class ="rsvp_li" id="rsvp_<%= rsvp_var.id %>">
+	<%= image_tag rsvp_var.member.user.avatar.url(:thumb) %>
+</li>
+<% end %>
