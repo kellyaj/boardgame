@@ -40,6 +40,7 @@ class UsersController < ApplicationController
     #UserMailer.welcome_email(@user).deliver
     if @user.save
       session[:user_id] = @user.id
+      UserMailer.welcome_email(@user).deliver
       redirect_to @user, notice: 'User was successfully created.'
       #will want this to redirect to the user dashboard
     else
