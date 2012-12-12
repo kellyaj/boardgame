@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212002912) do
+ActiveRecord::Schema.define(:version => 20121212011236) do
 
   create_table "collections", :force => true do |t|
     t.integer  "user_id"
@@ -137,6 +137,14 @@ ActiveRecord::Schema.define(:version => 20121212002912) do
     t.boolean  "confirmed"
     t.string   "snacks"
     t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "snacks", :force => true do |t|
+    t.string   "name"
+    t.integer  "event_id"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
   has_many :game_suggestions
   has_many :rsvps
-
+  has_many :snacks
   validates_presence_of :location, :event_date
 
   validate :not_past_date
