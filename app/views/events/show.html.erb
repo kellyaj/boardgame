@@ -1,5 +1,5 @@
 <h1>
-	<%= @event.event_date.strftime("%B %d, %Y") %>
+	<%= @event.event_date.strftime("%B %d, %Y") %> at <%= @event.event_time.strftime("%l %p") %>
 </h1>
 
 <strong>Location</strong>

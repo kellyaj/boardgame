@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209233142) do
+ActiveRecord::Schema.define(:version => 20121212002912) do
 
   create_table "collections", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20121209233142) do
     t.datetime "updated_at", :null => false
     t.integer  "group_id"
     t.date     "event_date"
+    t.time     "event_time"
   end
 
   create_table "favorites", :force => true do |t|
