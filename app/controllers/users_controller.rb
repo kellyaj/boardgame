@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
     game_name = params[:new_game_name]
     assign_or_create_game(game_name)
-
+    #UserMailer.welcome_email(@user).deliver
     if @user.save
       session[:user_id] = @user.id
       redirect_to @user, notice: 'User was successfully created.'
