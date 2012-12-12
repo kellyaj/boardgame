@@ -1,0 +1,3 @@
+$("#name").parent().before("<%= escape_javascript render('events/snack', :snack_var => @snack)%>");
+$("#snack_<%=@snack.id%>").slideDown();
+$("#name").val("");

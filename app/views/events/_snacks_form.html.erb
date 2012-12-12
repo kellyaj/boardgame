@@ -1,6 +1,6 @@
 <li>
-	<%= form_tag(@snack) do |f| %>
-		<%= text_field_tag :name %>
+	<%= form_tag @snack, remote: true do |f| %>
+		<%= text_field_tag :name  %>
 		<%= hidden_field_tag :event_id, @event.id %>
 		<%= hidden_field_tag :user_id, current_user.id %>
 	<% end %>

@@ -52,9 +52,7 @@
 <ul>
 	<% @snacks.each do |snack| %>
 		<% unless snack.name.nil? %>
-			<li>
-				<%= snack.name %>
-			</li>
+			<%= render 'snack', :snack_var => snack %>
 		<% end %>
 	<% end %>
 	<%= render 'snacks_form' %>

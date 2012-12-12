@@ -10,11 +10,14 @@ class SnacksController < ApplicationController
   	@snack.event_id = params[:event_id]
   	@snack.user_id = params[:user_id]
   	
-  	if @snack.save
-  		redirect_to groups_url, notice: "Snack added"
-  	else
-  		render action: 'new'
-  	end
+  	respond_to do |format|
+      if @snack.save
+        format.js { render 'create' }
+        format.html { redirect_to groups_url, notice: 'Snack was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
+    end 
   end
 
   def destroy
