@@ -7,13 +7,12 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     
     respond_to do |format|
-      format.html {
-        if @post.save
-          redirect_to groups_url, notice: 'Post was successfully created.' 
-        else
-          render action: "new"
-        end }
-      format.js 
+      if @post.save
+        format.js { render 'create' }
+        format.html { redirect_to groups_url, notice: 'Post was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
     end 
 
   end

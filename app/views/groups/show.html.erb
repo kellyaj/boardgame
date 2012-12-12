@@ -39,7 +39,7 @@
     <strong>Upcoming Game:</strong>
   <% if @upcoming_event.present? %>
     <br>
-    <%= @upcoming_event.event_date.strftime("%B %d, %Y") %>
+    <%= @upcoming_event.event_date.strftime("%B %d, %Y") %> at <%= @upcoming_event.event_time.strftime("%l %p") %>
     <br>
     <%= @upcoming_event.location %>
   <% else %>
@@ -51,8 +51,10 @@
 <strong>Upcoming Game Nights:</strong>
 <ul>
   <% @group.events.each do |event| %>
-    <li> 
-      <%= link_to event.event_date.strftime("%B %d, %Y"), [@group, event] %>
+    <li>
+      <% #unless event.event_date < Date.today || event.id = @upcoming_event.id %> 
+        <%= link_to event.event_date.strftime("%B %d, %Y"), [@group, event] %>
+      <% #end %>
     </li>
   <% end %>
 </ul>
@@ -72,10 +74,9 @@
 
 <p>
   <strong> Messages </strong>
-<ul>
-<div id='testing' >
+<ul id='testing'>
 <% @posts.each do |message| %>
-  <li>
+  <li id="message_<%= message.id%>">
     <%= image_tag message.member.user.avatar.url(:thumb) %> <%= message.message %>
   </li>
 <% end %>

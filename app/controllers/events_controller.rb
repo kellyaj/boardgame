@@ -15,6 +15,9 @@ class EventsController < ApplicationController
     @game_suggestion.event_id = @event.id
     @snacks = Snack.find_all_by_event_id(@event.id)
     @game_suggestions = GameSuggestion.find_with_reputation(:upvotes, :all, order: "upvotes desc")
+    @current_member = Member.find_by_group_id_and_user_id(@event.group_id,current_user.id)
+    @member_confirmed = Rsvp.find_by_event_id_and_member_id(@event.id,@current_member.id)
+
     @rsvp = Rsvp.new
     @snack = Snack.new
   end

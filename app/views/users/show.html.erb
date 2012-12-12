@@ -53,7 +53,9 @@
 	<% if @snacks.present? %>
 		<% @snacks.each do |snack| %>
 			<li>
-				<%= snack.name %>
+				<% unless snack.event.event_date < Date.today %>
+					<%= snack.name %>
+				<% end %>
 			</li>
 		<% end %>
 	<% end %>
