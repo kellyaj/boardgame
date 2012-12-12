@@ -47,3 +47,23 @@
 	<% end %>
 <ul>
 <%= link_to 'Back', users_path %>
+
+<strong> My List </strong>
+<ul>
+	<% if @snacks.present? %>
+		<% @snacks.each do |snack| %>
+			<li>
+				<%= snack.name %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<% if @upcoming_event.present? %>
+	<ul>
+		<li> Upcoming Game: </li>
+		<li> <%= @upcoming_event.event_date.strftime("%B %d, %Y") %> </li>
+		<li> <%= @upcoming_event.event_time.strftime("%l %p") %> </li>
+		<li> <%= @upcoming_event.location %>   </li>
+	</ul>
+<% end %>

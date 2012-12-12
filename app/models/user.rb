@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :members
   has_many :groups, :through => :members
   has_many :posts, :through => :members
+  has_many :events, :through => :groups
   validates_presence_of :email, :password, :password_confirmation
   validates_uniqueness_of :email
   has_many :invites

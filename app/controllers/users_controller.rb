@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @invites = Invite.find_all_by_user_id(@user.id)
+    @snacks = Snack.find_all_by_user_id(@user.id)
+    @upcoming_event = @user.events.first(:order => 'event_date asc')
   end
 
   def new
