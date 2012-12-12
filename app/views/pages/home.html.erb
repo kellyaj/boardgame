@@ -1,10 +1,29 @@
-<h1><strong> Game Night Planner</strong> </h1>
-
-<p> 
-	<strong>Taking the work out of play</strong>
-	<p>
-		Planning and coordinating your game nights has never been easier. Decide on which games to play, invite others players, and make sure someone is bringing the chips and salsa.
-	</p>
-</p>
-
-<%= link_to "Sign Up", new_user_url %>
+<body class="pages">
+<div class="background">
+	<div class="login">
+		<% #unless current_user %>
+			<%= form_tag '/sessions/login' do %>
+			<%= text_field_tag 'email', nil, placeholder: 'Email', class: 'login-input' %>
+			<%= password_field_tag 'password', nil, placeholder: 'Password', class: 'login-input'%>
+			<%= submit_tag 'welcome back!', {class: "submit-button"} %>
+			<% end %>
+		<% #end %>
+	</div>
+	<div class="page-header">
+		<h1 class="title"><strong>play with us</strong> </h1>
+		<h2 class="title">Game Night Planner</h2>
+	</div>
+	<div class="home-copy-container">
+		<h3 class="home-copy">Taking the work out of play</h3>
+		<p class="home-copy">Planning and coordinating your game nights has never been easier. Decide on which game to play, invite other players and make sure someone is bringing the salsa and chips.</p>
+	</div>
+	<div class="sign-up-container">
+		<h3 class="sign-up-copy">It's Free!</h3>
+		<h4 class="sign-up-subhead">Plan your next game now</h4>
+		<%= link_to "sign up", new_user_url, {class: "sign-up"} %>
+	</div>
+	<footer class="nav">
+		<p>Copyright Play With Us 2012</p>
+	</footer>
+</div>
+</body>

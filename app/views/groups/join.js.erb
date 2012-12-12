@@ -1,0 +1,2 @@
+$("#edit_group_<%= @group.id %>").before("<%= escape_javascript render('groups/member', :member_var => @group.members.last)%>");
+$('#edit_group_<%= @group.id %>').hide();

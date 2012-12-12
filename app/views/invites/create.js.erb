@@ -1,0 +1,3 @@
+$("#new_invite").parent().before("<%= escape_javascript render('groups/invite', :invite_var => @invite)%>");
+$("#invite_<%=@invite.id%>").slideDown();
+$('#invite_form')[0].reset();

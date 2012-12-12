@@ -1,7 +1,55 @@
 <h1>
-	<%= @event.event_date.strftime("%B %d, %Y") %>
+	<%= @event.event_date.strftime("%B %d, %Y") %> at <%= @event.event_time.strftime("%l %p") %>
 </h1>
 
+<strong>Location</strong>
 <p>
 	<%= @event.location %>
 </p>
+
+<strong>Game Choice</strong>
+<ul>
+	<% @event.game_suggestions.each do |suggestion| %>
+		<%= render 'game_suggestion', :game_suggestion_var => suggestion %>
+	<% end %>
+	<%= render 'inline_form' %>
+</ul>
+
+<strong> Attending: </strong>
+<ul id="attending_list">
+	<% @event.rsvps.each do |member| %>
+		<%= render 'attending', :rsvp_var => member %>
+	<% end %>
+	<% unless @member_confirmed %>
+		<strong> Can you attend? </strong>
+		<% url = ([@group, @event]) %>
+		<%= form_for @rsvp, :url => url, remote: true, :method => 'post' do |f| %>
+		<%= f.submit "Yes, I'm coming" %>
+		<% end %>
+<% end %>
+</ul>
+
+
+<%= link_to 'Back', @group %>
+
+<strong>Game Choice</strong>
+<ul>
+<% @game_suggestions.each do |show| %>
+	<% unless show.game.nil? %>
+	<li>
+	<%= show.game.name %> <%= link_to "up", upvote_game_suggestion_path(show, type: "up"), method: "post" %>
+	</li>
+	<% end %>
+<% end %>
+<%= render 'inline_form' %>
+</ul>
+
+<strong> Snacks </strong>
+<ul>
+	<% @snacks.each do |snack| %>
+		<% unless snack.name.nil? %>
+			<%= render 'snack', :snack_var => snack %>
+		<% end %>
+	<% end %>
+	<%= render 'snacks_form' %>
+</ul>

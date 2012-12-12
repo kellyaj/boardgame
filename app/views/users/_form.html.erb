@@ -1,8 +1,8 @@
-<%= form_for(@user) do |f| %>
+<body class="users">
+  <%= form_for @user, :html => { :multipart => true } do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,48 +10,45 @@
       </ul>
     </div>
   <% end %>
+  <header>
+    <div class="logo-container"> 
+      <h1 class="logo"><strong>play with us</strong> </h1>
+      <h2 class="logo"><strong>Game Night Planner</strong></h2>
+    </div>
+  </header>
+  <aside>
+    <div class="add-image-container">
+      <% if @user.avatar.present? %>
+        <%= image_tag @user.avatar.url(:medium) %>
+      <% end %>
+      Add your image:
+      <%= f.file_field :avatar %>
+    </div>
+  </aside>
+<div class="body-copy-container">
+  <h2 class="page-headline"><strong>Create your player profile</strong></h2>
+  <div class="form-container">
+    <div class="email-password-container">
+        <%= f.text_field :email,  placeholder: 'email address', class:"full-width-form"%> 
+        <%= f.password_field :password, placeholder: 'password', class: "half-width-form", class: 'left-form'%> 
+        <%= f.password_field :password_confirmation, placeholder: 'confirm password', class: "half-width-form", class: "right-form" %>
+    </div>
+    <div class="about-user-container">
+        <%= f.text_field :firstname, placeholder: 'first name' %> 
+        <%= f.text_field :lastname, placeholder: 'last name' %>
+        <%= f.text_field :location, placeholder: 'location' %>  
+    </div>
+      <strong>Current games:</strong><br />
+  <% @user.collections.each do |collection| %>
+    <%= collection.game.name %>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :display_name %><br />
-    <%= f.text_field :name %>
+  Add New Game:
+  <%= text_field_tag :new_game_name, '', data: {autocomplete_source: Game.order(:name).map(&:name)} %> 
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+      <% end %>
   </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :lastname %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-
-
- <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  
- <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.text_field :picture %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+</body>

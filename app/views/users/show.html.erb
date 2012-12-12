@@ -1,5 +1,5 @@
 <p> 
- <%= image_tag @user.picture, :width => "200", :height => "150" %>
+ <%= image_tag @user.avatar.url(:medium) %>
  <strong><font size = 10>
  	<%= @user.name %>
  </strong></font>
@@ -17,17 +17,17 @@
 </p>
 
 <p>
-	<strong> <%= @user.name%>'s Groups: </strong>
+	<strong> <%= @user.firstname%>'s Groups: </strong>
 	<ul>
 		<% @user.groups.each do |group| %>
-		<li> <%= link_to group.name, group %> </li>	
+		<li> <%= image_tag group.avatar(:thumb) %><%= link_to group.name, group %> </li>	
 		<% end %>
 	</ul>
 </p>
 
 
 	<ul>
-	<strong> <%= @user.name %>'s Games: </strong> 
+	<strong> <%= @user.firstname %>'s Games: </strong> 
 	<% @user.collections.each do |collection| %>
 		<li> 
 			<%= collection.game.name %>
@@ -38,5 +38,34 @@
 	<% end %>
 	</ul>
 
-
+<strong>Your current invites:</strong>
+<ul>
+	<% @invites.each do |invite| %>
+		<li>
+				<%= link_to invite.group.name, invite.group %>
+		</li>
+	<% end %>
+<ul>
 <%= link_to 'Back', users_path %>
+
+<strong> My List </strong>
+<ul>
+	<% if @snacks.present? %>
+		<% @snacks.each do |snack| %>
+			<li>
+				<% unless snack.event.event_date < Date.today %>
+					<%= snack.name %>
+				<% end %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+
+<% if @upcoming_event.present? %>
+	<ul>
+		<li> Upcoming Game: </li>
+		<li> <%= @upcoming_event.event_date.strftime("%B %d, %Y") %> </li>
+		<li> <%= @upcoming_event.event_time.strftime("%l %p") %> </li>
+		<li> <%= @upcoming_event.location %>   </li>
+	</ul>
+<% end %>

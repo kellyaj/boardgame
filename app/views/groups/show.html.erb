@@ -2,7 +2,7 @@
   <%= @group.name %>
 </h1>
 <h1>
-  <%= image_tag @group.picture, :width => "200", :height => "150" %>
+  <%= image_tag @group.avatar.url(:medium) %>
 </h1>
 
 <% if @group.location.present? %>
@@ -21,34 +21,77 @@
 
 <h1><strong>Members</h1></strong>
 <ul>
-<% @group.members.each do |member| %>
-  <li>
-    <%= image_tag member.user.picture, :width => "150", :height => "100" %>
-    <%= member.user.name %> 
-  </li>
+  <% @group.members.each do |member| %>
+    <%= render 'member', :member_var => member %> 
+  <% end %>
+  <% unless @group.members.find_by_user_id(session[:user_id]).present? %>
+  <% url = join_group_url(@group) %>
+  <%= form_for @group, remote: true, :url => url, :method => 'put' do |f| %>
+  <%= f.submit "Join!" %>
+  <% end %>
 <% end %>
 </ul>
 
 
 <p>
-  <strong>Upcoming Game:</strong>
+    <strong>Upcoming Game:</strong>
+  <% if @upcoming_event.present? %>
     <br>
-    <%= @upcoming_event.event_date.strftime("%B %d, %Y") %>
+    <%= @upcoming_event.event_date.strftime("%B %d, %Y") %> at <%= @upcoming_event.event_time.strftime("%l %p") %>
     <br>
     <%= @upcoming_event.location %>
+  <% else %>
+    <br>
+    <strong>No events planned<strong>
+  <% end %>
 </p>
-
+  <% if @group.events.present? %>
 <strong>Upcoming Game Nights:</strong>
 <ul>
   <% @group.events.each do |event| %>
-    <li> 
-      <%= link_to event.event_date.strftime("%B %d, %Y"), [@group, event] %>
+    <li>
+      <% #unless event.event_date < Date.today || event.id = @upcoming_event.id %> 
+        <%= link_to event.event_date.strftime("%B %d, %Y"), [@group, event] %>
+      <% #end %>
     </li>
   <% end %>
 </ul>
-
+  <% end %>
 <p>
 <%= link_to 'Create new event', new_group_event_url(@group) %>
 </p>
 
 <%= link_to 'Back', groups_path %>
+
+
+<p>
+  <strong> Messages </strong>
+<ul>
+<% @posts.each do |message| %>
+  <%= render 'post', :post_var => message %> 
+<% end %>
+<%= render 'inline_form' %>
+</ul>
+</p>
+<br />
+<% if @games.present? %>
+<strong> Game Collections:</strong>
+<ul>
+  <% @games.each do |game| %>
+    <li>
+      <%= game.name %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
+
+<% if session[:user_id] == @group.members.where(:admin => true).first.user.id %>
+
+  Current Invitees:
+  <ul>
+    <% @invitees.each do |invitee| %>
+      <%= render 'invite', :invite_var => invitee %>
+    <% end %>
+    <%= render 'invites_form' %>
+  </ul>
+<% end %>

@@ -4,10 +4,10 @@ gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 group :development do
-  gem 'sqlite3'
+	gem 'sqlite3'
 end
+
 
 group :production do
   gem 'pg'
@@ -41,3 +41,12 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'pry'
+gem 'pry-doc'
+gem 'pry-remote'
+gem 'pry-nav'
+gem 'pry-stack_explorer'
+gem 'pry-rescue'
+gem "paperclip", "~> 3.0"
+gem 'activerecord-reputation-system', require: 'reputation_system'

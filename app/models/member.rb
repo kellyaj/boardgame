@@ -5,6 +5,8 @@ class Member < ActiveRecord::Base
   belongs_to :user
 
   has_many :posts
-
+  has_many :rsvps
+  validates_uniqueness_of :user_id, :scope => [:group_id]
   validates_presence_of :group_id, :user_id
+
 end

@@ -3,4 +3,7 @@ class Rsvp < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :event
+  belongs_to :member
+
+  validates_uniqueness_of :member_id, :scope => [:event_id]
 end

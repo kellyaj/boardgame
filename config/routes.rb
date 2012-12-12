@@ -11,9 +11,30 @@ Boardgame::Application.routes.draw do
   root to: 'pages#home'
 
   resources :groups do
+  	member do
+  		put 'join'
+  	end
   	resources :events
+      member do
+        put 'join'
+      end
   end
- # change all the links
+
+  resources :invites
+
   resources :users
 
+  resources :posts
+
+  resources :game_suggestions do
+    member { post :upvote }
+  end
+
+  resources :snacks
+  
+  get '/groups/:id/join' => 'groups#join'
+
+  post '/groups/:id/events/:id' => 'events#join'
+
+  get '/users/:id/dashboard' => 'users#dashboard', :as => 'user_dashboard'
 end

@@ -1,0 +1,7 @@
+<li>
+Invite by email:
+<%= form_tag @invite, :id => "invite_form", remote: true do |f| %>
+	<%= text_field_tag :new_invite %>
+	<%= hidden_field_tag :group_id, @group.id %>
+<% end %>
+</li>

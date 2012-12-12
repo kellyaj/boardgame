@@ -1,0 +1,3 @@
+$("#new_post").parent().before("<%= escape_javascript render('groups/post', :post_var => @post)%>");
+$("#post_<%=@post.id%>").slideDown();
+$("#post_message").val("");

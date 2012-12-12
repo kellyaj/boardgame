@@ -1,3 +1,98 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.container{
+	border: 1px solid black;
+	background: #488989;
+}
+body{
+	font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
+	line-height: 145%;
+}
+header{
+	background: #76bbbb url(header-bg.png) no-repeat;
+}
+.logo-container{
+	margin-left: 10px;
+	width: 250px;
+	padding: 20px 10px;
+}
+h1.logo{
+	text-transform: lowercase;
+	text-align: right;
+	color: #d8ec79;
+	font-size: 40px;
+	margin-bottom: auto;
+	margin-top: auto;
+}
+h2.logo{
+	color: #fff;
+	font-size: 20px;
+	margin-bottom: 15px;
+	margin-top: 10px;	
+	padding-top: 5px;
+	text-align: right;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+strong{
+	font-weight: bold;
+}
+/**************** ADD PHOTO SIDEBAR **************/
+aside{
+float: left;
+}
+/**************** BODY CONTENT **************/
+.body-copy-container{
+	clear: both;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+h2.page-headline{
+	color: #ff824f;
+	font-size: 30px;
+}
+.form-container{
+	margin-top: 20px;
+	width: 370px;
+	padding: none;
+}
+.full-width-form{
+	width: 100%;
+}
+.half-width-form{
+	width: 48%;
+	margin: 0;
+}
+.left-form{
+	float: left;
+}
+.right-form{
+	float: right;
+}
+.about-user-container{
+	clear: both;
+}
+
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #999;
+  cursor: default;
+  li {
+    background-color: #FFF;
+    border-top: solid 1px #DDD;
+    margin: 0;
+    padding: 0;
+    a {
+      color: #000;
+      display: block;
+      padding: 3px;
+    }
+    a.ui-state-hover, a.ui-state-active {
+      background-color: #FFFCB2;
+    }
+  }
+}
