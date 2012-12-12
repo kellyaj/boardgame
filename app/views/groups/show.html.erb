@@ -74,7 +74,7 @@
 
 <p>
   <strong> Messages </strong>
-<ul id='testing'>
+<ul>
 <% @posts.each do |message| %>
   <%= render 'post', :post_var => message %> 
 <% end %>
@@ -98,7 +98,7 @@
   Current Invitees:
   <ul>
     <% @invitees.each do |invitee| %>
-      <li><%= invitee.user.email %></li>
+      <%= render 'invite', :invite_var => invitee %>
     <% end %>
     <%= render 'invites_form' %>
   </ul>
