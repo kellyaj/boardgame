@@ -86,9 +86,10 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     @group.add_member(current_user)
+
     respond_to do |format|
-      format.html { redirect_to @group, notice: "You have successfully joined the group." }
       format.js
+      format.html 
     end
   end
 

@@ -1,0 +1,8 @@
+<% unless member_var.nil? %>
+	<li class="member_li" id="member_<%= member_var.id %>">
+	   <%= image_tag member_var.user.avatar.url(:thumb) %>
+	   <%= link_to member_var.user.firstname, user_url(member_var.user_id) %>
+	   <% if member_var.admin == true %> (admin)
+	   <% end %> 
+	</li>
+<% end %>

@@ -21,17 +21,15 @@
 
 <h1><strong>Members</h1></strong>
 <ul>
-<div id='members_list'>
-<% @group.members.each do |member| %>
-  <li>
-    <%= image_tag member.user.avatar.url(:thumb) %>
-    <%= link_to member.user.firstname, user_url(member.user_id) %>
-    <% if member.admin == true %>
-      (admin)
-    <% end %> 
-  </li>
+  <% @group.members.each do |member| %>
+    <%= render 'member', :member_var => member %> 
+  <% end %>
+  <% unless @group.members.find_by_user_id(session[:user_id]).present? %>
+  <% url = join_group_url(@group) %>
+  <%= form_for @group, remote: true, :url => url, :method => 'put' do |f| %>
+  <%= f.submit "Join!" %>
+  <% end %>
 <% end %>
-</div>
 </ul>
 
 
@@ -65,12 +63,6 @@
 
 <%= link_to 'Back', groups_path %>
 
-<% unless @group.members.find_by_user_id(session[:user_id]).present? %>
-  <% url = join_group_url(@group) %>
-  <%= form_for @group, remote: true, :url => url, :method => 'put' do |f| %>
-  <%= f.submit "Join!" %>
-  <% end %>
-<% end %>
 
 <p>
   <strong> Messages </strong>
