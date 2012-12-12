@@ -76,12 +76,9 @@
   <strong> Messages </strong>
 <ul id='testing'>
 <% @posts.each do |message| %>
-  <li id="message_<%= message.id%>">
-    <%= image_tag message.member.user.avatar.url(:thumb) %> <%= message.message %>
-  </li>
+  <%= render 'post', :post_var => message %> 
 <% end %>
 <%= render 'inline_form' %>
-</div>
 </ul>
 </p>
 <br />

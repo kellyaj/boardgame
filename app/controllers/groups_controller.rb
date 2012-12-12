@@ -42,6 +42,7 @@ class GroupsController < ApplicationController
     @invite.group_id = @group.id
     @posts = @group.posts
     @invitees = Invite.find_all_by_group_id(@group.id)
+    
   end
 
   def new
