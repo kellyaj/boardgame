@@ -6,17 +6,18 @@ class UserMailer < ActionMailer::Base
     @user = user
     email_with_name = "#{@user.name} <#{@user.email}>"
     @url = "http://sheltered-falls-2959.herokuapp.com/"
+    @message.html_safe
     mail(:to => email_with_name, :subject => "Welcome to Our Awesome Site")
   end
 end
 
 
  # class MyMailer < ActionMailer::Base
- #          def signup_notification(recipient)
- #            recipients recipient.email_address_with_name
- #            subject    "New account information"
- #            body       "account" => recipient
- #            from       "system@example.com"
- #            content_type "text/html"   #Here's where the magic happens
- #          end
- #        end
+ #           def signup_notification(recipient)
+ #             recipients recipient.email_address_with_name
+ #             subject    "New account information"
+ #             body       "account" => recipient
+ #             from       "system@example.com"
+ #             content_type "text/html"   #Here's where the magic happens
+ #           end
+ #         end
