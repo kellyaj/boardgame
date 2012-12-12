@@ -19,6 +19,8 @@ class Group < ActiveRecord::Base
   	new_member.user_id = user.id
   	new_member.group_id = self.id
   	new_member.save
+    current_invite = Invite.find_by_group_id_and_user_id(self.id, user.id)
+    current_invite.destroy
   end
 
   def remove_related_members
