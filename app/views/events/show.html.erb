@@ -32,17 +32,6 @@
 
 <%= link_to 'Back', @group %>
 
-<strong>Game Choice</strong>
-<ul>
-<% @game_suggestions.each do |show| %>
-	<% unless show.game.nil? %>
-	<li>
-	<%= show.game.name %> <%= link_to "up", upvote_game_suggestion_path(show, type: "up"), method: "post" %>
-	</li>
-	<% end %>
-<% end %>
-<%= render 'inline_form' %>
-</ul>
 
 <strong> Snacks </strong>
 <ul>
