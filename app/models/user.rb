@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :password, :password_confirmation
   validates_uniqueness_of :email
   has_many :invites
+
+  validates :password, :on => :create, :length => {:within => 6..12}
+
   #after_destroy :remove_related_memberships
 
   has_attached_file :avatar, :styles => { :medium => "250x250>", :thumb => "50x50>" }
