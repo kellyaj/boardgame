@@ -31,9 +31,6 @@
 	<% @user.collections.each do |collection| %>
 		<li> 
 			<%= collection.game.name %>
-			<% if collection.favorite? %>
-				<%= image_tag 'http://2.bp.blogspot.com/-Etryoufk04g/TbDrB9kJrOI/AAAAAAAACE8/uT5O0SJe9AU/s1600/one+star+review+star.jpg', :width => "25", :height => "25"%>
-			<% end %>
 		</li>
 	<% end %>
 	</ul>
